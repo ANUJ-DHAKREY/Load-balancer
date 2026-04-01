@@ -1,0 +1,15 @@
+# Binaries
+bin/
+*.exe
+
+# Coverage
+coverage.out
+coverage.html
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

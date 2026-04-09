@@ -1,0 +1,33 @@
+services:
+  loadbalancer:
+    build: .
+    ports:
+      - "8080:8080"
+      - "9090:9090"
+    volumes:
+      - ./config.docker.yaml:/etc/loadbalancer/config.yaml:ro
+    depends_on:
+      - backend1
+      - backend2
+      - backend3
+
+  backend1:
+    build: .
+    entrypoint: ["example-backend"]
+    command: ["-port", "8080", "-name", "backend-1"]
+    expose:
+      - "8080"
+
+  backend2:
+    build: .
+    entrypoint: ["example-backend"]
+    command: ["-port", "8080", "-name", "backend-2"]
+    expose:
+      - "8080"
+
+  backend3:
+    build: .
+    entrypoint: ["example-backend"]
+    command: ["-port", "8080", "-name", "backend-3"]
+    expose:
+      - "8080"
